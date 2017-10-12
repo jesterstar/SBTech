@@ -1,0 +1,19 @@
+/*----------------------- Main ------------------------*/
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  display: table;
+  width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  background: $main-color;
+  .main-layout {
+    display: table-row;
+    height: 100%;
+    background-color: $lightgrey;
+  }
+}

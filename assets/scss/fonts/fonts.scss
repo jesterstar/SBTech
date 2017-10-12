@@ -1,0 +1,11 @@
+/*----------------------- Fonts ------------------------*/
+
+/**
+* HelveticaInseratLT
+*/
+@font-face {
+  font-family: 'HelveticaInseratLT';
+  src: url('../fonts/helvetica/HelveticaInseratLT.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/helvetica/HelveticaInseratLT.woff') format('woff'), /* Pretty Modern Browsers */
+  url('../fonts/helvetica/HelveticaInseratLT.ttf')  format('truetype') /* Safari, Android, iOS */
+}

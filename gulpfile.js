@@ -17,7 +17,7 @@ gulp.task('webpack', function(callback) {
 });
 
 gulp.task('sass', function(){
-    return gulp.src('assets/sass/main.+(scss|sass)')
+    return gulp.src('assets/scss/default.+(scss|sass)')
         .pipe(sass())
         .pipe(gulp.dest('assets/css'))
 });
@@ -34,6 +34,6 @@ gulp.task('build', ['webpack','css-libs']);
 
 //watcher SASS
 gulp.task('watch', ['css-libs', 'sass', 'webpack'], function(){
-    gulp.watch('assets/sass/**/*+(scss|sass)', ['sass']);
+    gulp.watch('assets/scss/**/*+(scss|sass)', ['sass']);
     gulp.watch('assets/javascript/src/**/*.js', ['webpack']);
 });
