@@ -2,7 +2,121 @@
 
 .header {
   border-top: 10px solid $main-bg;
-  margin: 0 0 10px 0;
   height: 105px;
   background-color: $lightgrey;
+  position: relative;
+  &__logo {
+    font-size: rem(30);
+    color: $main-color;
+    background-color: $logo-bg;
+    position: fixed;
+    top: 85px;
+    padding: 8px 12px;
+    > a {
+      display: inline-block;
+      width: 15px;
+      word-wrap: break-word;
+      color: $main-color;
+    }
+  }
+  &__navigation {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    > li {
+      display: inline-block;
+      min-width: 100px;
+      margin-right: -1px;
+      position: relative;
+      text-align: center;
+      &:last-child {
+        margin-right: 0;
+      }
+      > a {
+        display: block;
+        background-color: $grey;
+        font-size: rem(14);
+        line-height: rem(24);
+        color: $main-color;
+        @include mixin-transition-ease-in-out(.3s);
+        &:hover {
+          background-color: $darkgrey;
+          @include mixin-transition-ease-in-out(.3s);
+        }
+        &:focus {
+          background-color: $accordion-bg;
+          @include mixin-transition-ease-in-out(.3s);
+        }
+      }
+    }
+    > li.dropdown {
+      &:after {
+        content: '▸';
+        position: absolute;
+        right: 6px;
+        color: $main-color;
+        top: 5px;
+        font-size: rem(12);
+        @include mixin-rotate(90deg);
+      }
+      > ul {
+        position: absolute;
+        display: none;
+        top: 24px;
+        left: 0;
+        min-width: 150px;
+        background-color: $accordion-bg;
+        padding-left: 5px;
+        padding-right: 5px;
+        text-align: left;
+        > li {
+          border-bottom: 1px solid $grey;
+          font-size: rem(12);
+          font-family: $font-secondary;
+          padding: 6px 3px;
+          &:last-child {
+            border-bottom: 0;
+          }
+          > a {
+            color: $main-color;
+            width: 100%;
+            display: block;
+            @include mixin-transition-ease-in-out(.3s);
+            &:hover {
+              color: $lightgrey;
+              @include mixin-transition-ease-in-out(.3s);
+            }
+          }
+        }
+      }
+      &.active {
+        background-color: $grey;
+        > ul {
+          display: block;
+        }
+      }
+    }
+  }
+  &__language {
+    text-align: left;
+    right: 10px;
+    position: absolute;
+    bottom: 10px;
+    > li {
+      display: inline-block;
+      > a {
+        display: block;
+        opacity: .5;
+        border: 2px solid $grey;
+        @include mixin-border-radius(2px);
+        @include mixin-transition-ease-in-out(.3s);
+        &:hover {
+          opacity: 1;
+          border: 2px solid $accordion-bg;
+          @include mixin-border-radius(2px);
+          @include mixin-transition-ease-in-out(.3s);
+        }
+      }
+    }
+  }
 }

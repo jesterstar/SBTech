@@ -1,3 +1,9 @@
+import { initDropdown } from './../dropdown';
+
 export function initHeader() {
-  console.log('header');
+
+  /**
+   * Init dropwodn module
+   */
+  initDropdown('.dropdown');
 }

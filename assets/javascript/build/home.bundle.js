@@ -74,7 +74,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _header = __webpack_require__(1);
 
-var _sidebar = __webpack_require__(2);
+var _sidebar = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -121,8 +121,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.initHeader = initHeader;
+
+var _dropdown = __webpack_require__(2);
+
 function initHeader() {
-  console.log('header');
+
+  /**
+   * Init dropwodn module
+   */
+  (0, _dropdown.initDropdown)('.dropdown');
 }
 
 /***/ }),
@@ -135,9 +142,149 @@ function initHeader() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.initDropdown = initDropdown;
+/**
+ * Module to init dropdown
+ */
+
+function initDropdown(el) {
+  var currElement = $(el);
+
+  if (!currElement) {
+    return false;
+  } else {
+
+    /**
+     * Toggle function
+     */
+    var clickTrigger = function clickTrigger(container) {
+      var dropdown = $(container);
+
+      $(dropdown).each(function (i) {
+        $(dropdown[i]).on('click', function (e) {
+          e.preventDefault();
+
+          if ($(dropdown[i]).hasClass('active')) {
+            $(dropdown[i]).removeClass('active');
+            return;
+          }
+          $(dropdown[i]).addClass('active');
+
+          $(document).mouseup(function (e) {
+            if (!$(dropdown[i]).is(e.target) && $(dropdown[i]).has(e.target).length === 0) {
+              $(dropdown[i]).removeClass('active');
+            }
+          });
+        });
+      });
+    };
+
+    /**
+     * Init function
+     */
+
+
+    clickTrigger(currElement);
+  }
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.initSidebar = initSidebar;
+
+var _accordion = __webpack_require__(4);
+
 function initSidebar() {
-  console.log('sidebar');
+
+  /**
+   * Init accordion module
+   */
+  (0, _accordion.initAccordion)('.accordion');
+}
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initAccordion = initAccordion;
+/**
+ * Module to init accordion
+ */
+
+function initAccordion(el) {
+  var currElement = $(el);
+  var paneCollection = void 0,
+      dataToggle = void 0;
+
+  var openLabel = 'Click to open';
+  var closeLabel = 'Click to close';
+
+  if (!currElement) {
+    return false;
+  } else {
+
+    /**
+     * Function to render all panes
+     */
+    var paneRender = function paneRender(container) {
+      paneCollection = $(container).find('.pane');
+
+      for (var i = 0; i < paneCollection.length; i++) {
+        dataToggle = $(paneCollection[i]).data('toggle');
+
+        if (dataToggle == 'close') {
+          $(paneCollection[i]).addClass('closed').find('.panel .title').text(openLabel);
+        } else if (dataToggle == 'open') {
+          $(paneCollection[i]).addClass('opened').removeClass('closed').find('.panel .title').text(closeLabel);
+        }
+      }
+    };
+
+    /**
+     * Toggle function
+     */
+
+
+    var clickTrigger = function clickTrigger(container) {
+      var panel = $(container).find('.pane > .panel');
+
+      $(panel).each(function (i) {
+        $(panel[i]).on('click', function () {
+          dataToggle = $(panel[i]).closest('.pane').data('toggle');
+
+          if (dataToggle == 'close') {
+            $(panel).closest('.pane').addClass('closed').removeClass('opened').data('toggle', 'close').find('.panel .title').text(openLabel);
+
+            $(panel[i]).closest('.pane').addClass('opened').removeClass('closed').data('toggle', 'open').find('.panel .title').text(closeLabel);
+          } else if (dataToggle == 'open') {
+            $(panel).closest('.pane').addClass('closed').removeClass('opened').data('toggle', 'close').find('.panel .title').text(openLabel);
+          }
+        });
+      });
+    };
+
+    /**
+     * Init functions
+     */
+
+
+    paneRender(currElement);
+    clickTrigger(currElement);
+  }
 }
 
 /***/ })

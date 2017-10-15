@@ -2,6 +2,42 @@
 
 .footer {
   height: 43px;
+  line-height: 43px;
+  padding: 0 20px;
   margin: 10px 0;
   background-color: $lightgrey;
+  > * {
+    color: $darkgrey;
+    font-size: rem(14);
+    font-family: $font-secondary;
+    &:after {
+      clear: both;
+      content: '';
+      display: table;
+      height: 0;
+    }
+  }
+  &__copyright {
+    float: left;
+  }
+  &__nav {
+    float: right;
+    text-align: left;
+    > li {
+      margin-right: 15px;
+      display: inline-block;
+      &:last-child {
+        margin-right: 0;
+      }
+      > a {
+        color: $darkgrey;
+        border-bottom: 1px solid $darkgrey;
+        @include mixin-transition-ease-in-out(.3s);
+        &:hover {
+          border-bottom: 1px solid transparent;
+          @include mixin-transition-ease-in-out(.3s);
+        }
+      }
+    }
+  }
 }

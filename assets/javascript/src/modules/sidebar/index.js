@@ -1,3 +1,9 @@
+import { initAccordion } from './../accordion';
+
 export function initSidebar() {
-  console.log('sidebar');
+
+  /**
+   * Init accordion module
+   */
+  initAccordion('.accordion');
 }

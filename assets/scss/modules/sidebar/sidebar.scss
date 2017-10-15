@@ -1,1 +1,48 @@
 /*----------------------- Sidebar ------------------------*/
+
+.accordion {
+  background-color: $accordion-bg;
+  font-size: rem(12);
+  font-family: $font-secondary;
+  > .pane {
+    padding: 10px;
+    border-bottom: 1px solid $darkgrey;
+    @include mixin-transition-ease-in-out(.3s);
+    &:hover {
+      background-color: $grey;
+      @include mixin-transition-ease-in-out(.3s);
+    }
+    > .inner {
+      padding: 15px 0;
+    }
+    > .panel {
+      line-height: 20px;
+      vertical-align: middle;
+      position: relative;
+      cursor: pointer;
+      &:after {
+        content: '▸';
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+    &.closed {
+      > .inner {
+        display: none!important;
+        @include mixin-transition-ease-in-out(.3s);
+      }
+    }
+    &.opened {
+      > .inner {
+        display: block;
+        @include mixin-transition-ease-in-out(.3s);
+      }
+      > .panel {
+        &:after {
+          @include mixin-rotate(90deg);
+        }
+      }
+    }
+  }
+}

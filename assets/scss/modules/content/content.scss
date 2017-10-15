@@ -2,10 +2,58 @@
 
 .content {
   border-top: 10px solid $main-bg;
+  display: table;
+  height: calc(100% - 105px);
+  &__title {
+    font-size: rem(48);
+    line-height: rem(48);
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid $accordion-bg;
+    padding-bottom: 15px;
+  }
+  > div {
+    padding: 10px;
+    color: $main-color;
+  }
   .left {
-
+    vertical-align: top;
+    display: table-cell;
+    width: 70%;
+    background-color: $lightgrey;
+    > div {
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      padding: 10px;
+      background-color: $darkgrey;
+    }
+    p {
+      font-size: rem(12);
+      line-height: rem(16);
+      font-family: $font-secondary;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-bottom: 15px;
+      text-indent: 25px;
+      &:first-of-type {
+        border-top: 1px solid $grey;
+        padding-top: 15px;
+      }
+    }
   }
   .right {
-
+    vertical-align: top;
+    display: table-cell;
+    width: 30%;
+    background-color: $grey;
+    > div {
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      padding: 10px;
+      background-color: $darkgrey;
+    }
   }
 }
