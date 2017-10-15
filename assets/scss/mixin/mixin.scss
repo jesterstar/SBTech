@@ -31,25 +31,8 @@ $browser-context: 16;
   -o-transform: rotate($deg);
   transform: rotate($deg);
 }
-@mixin mixin-background($size,$url) {
-  background-repeat: no-repeat;
-  -webkit-background-size: $size;
-  background-size: $size;
-  background-position: center center;
-  background-image: url($url);
-}
 @mixin mixin-border-radius($var) {
   -webkit-border-radius: $var;
   -moz-border-radius: $var;
   border-radius: $var;
-}
-@mixin mixin-box-shadow($inset, $hoff, $voff, $blur, $color) {
-  -webkit-box-shadow: $inset $hoff $voff $blur $color;
-  -moz-box-shadow: $inset $hoff $voff $blur $color;
-  box-shadow: $inset $hoff $voff $blur $color;
-}
-@mixin mixin-box-shadow-none($var) {
-  -webkit-box-shadow: $var;
-  -moz-box-shadow: $var;
-  box-shadow: $var;
 }

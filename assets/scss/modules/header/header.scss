@@ -12,23 +12,43 @@
     position: fixed;
     top: 85px;
     padding: 8px 12px;
+    @media screen and (max-width: 991px) {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      z-index: 10;
+    }
     > a {
       display: inline-block;
       width: 15px;
+      -ms-word-wrap: break-word;
       word-wrap: break-word;
       color: $main-color;
+      @media screen and (max-width: 991px) {
+        width: auto;
+        -ms-word-wrap: normal;
+        word-wrap: normal;
+      }
     }
   }
   &__navigation {
     position: absolute;
     bottom: 0;
     left: 10px;
+    @media screen and (max-width: 640px) {
+      right: 10px;
+    }
     > li {
       display: inline-block;
       min-width: 100px;
       margin-right: -1px;
       position: relative;
       text-align: center;
+      font-family: $font-secondary;
+      font-weight: bold;
+      @media screen and (max-width: 640px) {
+        width: 24%;
+      }
       &:last-child {
         margin-right: 0;
       }
@@ -36,7 +56,7 @@
         display: block;
         background-color: $grey;
         font-size: rem(14);
-        line-height: rem(24);
+        line-height: rem(30);
         color: $main-color;
         @include mixin-transition-ease-in-out(.3s);
         &:hover {
@@ -55,14 +75,15 @@
         position: absolute;
         right: 6px;
         color: $main-color;
-        top: 5px;
+        top: 9px;
         font-size: rem(12);
         @include mixin-rotate(90deg);
       }
       > ul {
+        padding-top: 7px;
         position: absolute;
         display: none;
-        top: 24px;
+        top: 30px;
         left: 0;
         min-width: 150px;
         background-color: $accordion-bg;
@@ -71,6 +92,7 @@
         text-align: left;
         > li {
           border-bottom: 1px solid $grey;
+          font-weight: normal;
           font-size: rem(12);
           font-family: $font-secondary;
           padding: 6px 3px;
@@ -102,6 +124,10 @@
     right: 10px;
     position: absolute;
     bottom: 10px;
+    @media screen and (max-width: 768px) {
+      bottom: auto;
+      top: 10px;
+    }
     > li {
       display: inline-block;
       > a {

@@ -22,6 +22,10 @@
     display: table-cell;
     width: 70%;
     background-color: $lightgrey;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      display: block;
+    }
     > div {
       display: inline-block;
       height: 100%;
@@ -48,6 +52,10 @@
     display: table-cell;
     width: 30%;
     background-color: $grey;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      display: block;
+    }
     > div {
       display: inline-block;
       height: 100%;

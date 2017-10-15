@@ -198,6 +198,15 @@ body {
     display: table-row;
     height: 100%;
     background-color: #cccccc; }
+  @media screen and (max-width: 1380px) {
+    .wrapper {
+      width: 1000px; } }
+  @media screen and (max-width: 1100px) {
+    .wrapper {
+      width: 800px; } }
+  @media screen and (max-width: 991px) {
+    .wrapper {
+      width: 100%; } }
 
 /*----------------------- Header ------------------------*/
 .header {
@@ -212,28 +221,48 @@ body {
     position: fixed;
     top: 85px;
     padding: 8px 12px; }
+    @media screen and (max-width: 991px) {
+      .header__logo {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        z-index: 10; } }
     .header__logo > a {
       display: inline-block;
       width: 15px;
+      -ms-word-wrap: break-word;
       word-wrap: break-word;
       color: #fff; }
+      @media screen and (max-width: 991px) {
+        .header__logo > a {
+          width: auto;
+          -ms-word-wrap: normal;
+          word-wrap: normal; } }
   .header__navigation {
     position: absolute;
     bottom: 0;
     left: 10px; }
+    @media screen and (max-width: 640px) {
+      .header__navigation {
+        right: 10px; } }
     .header__navigation > li {
       display: inline-block;
       min-width: 100px;
       margin-right: -1px;
       position: relative;
-      text-align: center; }
+      text-align: center;
+      font-family: "Tahoma";
+      font-weight: bold; }
+      @media screen and (max-width: 640px) {
+        .header__navigation > li {
+          width: 24%; } }
       .header__navigation > li:last-child {
         margin-right: 0; }
       .header__navigation > li > a {
         display: block;
         background-color: #a3a3a3;
         font-size: 0.875rem;
-        line-height: 1.5rem;
+        line-height: 1.875rem;
         color: #fff;
         -webkit-transition: 0.3s all ease-in-out;
         -moz-transition: 0.3s all ease-in-out;
@@ -259,7 +288,7 @@ body {
       position: absolute;
       right: 6px;
       color: #fff;
-      top: 5px;
+      top: 9px;
       font-size: 0.75rem;
       -webkit-transform: rotate(90deg);
       -moz-transform: rotate(90deg);
@@ -267,9 +296,10 @@ body {
       -o-transform: rotate(90deg);
       transform: rotate(90deg); }
     .header__navigation > li.dropdown > ul {
+      padding-top: 7px;
       position: absolute;
       display: none;
-      top: 24px;
+      top: 30px;
       left: 0;
       min-width: 150px;
       background-color: #000;
@@ -278,6 +308,7 @@ body {
       text-align: left; }
       .header__navigation > li.dropdown > ul > li {
         border-bottom: 1px solid #a3a3a3;
+        font-weight: normal;
         font-size: 0.75rem;
         font-family: "Tahoma";
         padding: 6px 3px; }
@@ -308,6 +339,10 @@ body {
     right: 10px;
     position: absolute;
     bottom: 10px; }
+    @media screen and (max-width: 768px) {
+      .header__language {
+        bottom: auto;
+        top: 10px; } }
     .header__language > li {
       display: inline-block; }
       .header__language > li > a {
@@ -355,6 +390,10 @@ body {
     display: table-cell;
     width: 70%;
     background-color: #cccccc; }
+    @media screen and (max-width: 768px) {
+      .content .left {
+        width: 100%;
+        display: block; } }
     .content .left > div {
       display: inline-block;
       height: 100%;
@@ -377,6 +416,10 @@ body {
     display: table-cell;
     width: 30%;
     background-color: #a3a3a3; }
+    @media screen and (max-width: 768px) {
+      .content .right {
+        width: 100%;
+        display: block; } }
     .content .right > div {
       display: inline-block;
       height: 100%;
@@ -405,7 +448,8 @@ body {
       -o-transition: 0.3s all ease-in-out;
       transition: 0.3s all ease-in-out; }
     .accordion > .pane > .inner {
-      padding: 15px 0; }
+      padding: 15px 0;
+      line-height: 1.125rem; }
     .accordion > .pane > .panel {
       line-height: 20px;
       vertical-align: middle;
