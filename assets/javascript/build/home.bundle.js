@@ -237,8 +237,7 @@ function initAccordion(el) {
    * Define variables
    */
   var currElement = document.querySelectorAll(el);
-  var paneCollection = void 0,
-      dataToggle = void 0,
+  var dataToggle = void 0,
       panel = void 0;
 
   if (!currElement) {
@@ -246,26 +245,26 @@ function initAccordion(el) {
   } else {
 
     /**
-     * Function to render all panes
+     * Method to render all panes
      */
     var paneRender = function paneRender(container) {
-      paneCollection = container[0].children;
+      panel = container[0].children;
 
-      for (var i = 0; i < paneCollection.length; i++) {
-        dataToggle = paneCollection[i].dataset.toggle;
+      for (var i = 0; i < panel.length; i++) {
+        dataToggle = panel[i].dataset.toggle;
 
         if (dataToggle == 'close') {
-          paneCollection[i].classList.add('closed');
-          paneCollection[i].children[0].innerHTML = OPEN_LABEL_TEXT;
+          panel[i].classList.add('closed');
+          panel[i].children[0].innerHTML = OPEN_LABEL_TEXT;
         } else if (dataToggle == 'open') {
-          paneCollection[i].classList.add('opened');
-          paneCollection[i].children[0].innerHTML = CLOSE_LABEL_TEXT;
+          panel[i].classList.add('opened');
+          panel[i].children[0].innerHTML = CLOSE_LABEL_TEXT;
         }
       }
     };
 
     /**
-     * Toggle function
+     * Click trigger method
      */
 
 
@@ -284,6 +283,7 @@ function initAccordion(el) {
           this.parentNode.classList.replace('opened', 'closed');
         } else if (dataToggle = 'close') {
           closeAllPanes();
+
           this.innerHTML = CLOSE_LABEL_TEXT;
           this.parentNode.dataset.toggle = 'open';
           this.parentNode.classList.replace('closed', 'opened');
@@ -301,13 +301,16 @@ function initAccordion(el) {
         }
       }
 
+      /**
+       * Adding event listener to the panes
+       */
       for (var i = 0; i < panel.length; i++) {
         panel[i].children[0].addEventListener('click', initClick, false);
       }
     };
 
     /**
-     * Init functions
+     * Init method`s
      */
 
 
