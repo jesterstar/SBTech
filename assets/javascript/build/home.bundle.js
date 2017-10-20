@@ -180,11 +180,13 @@ function initDropdown(el) {
         /**
          * Event when user click not on active element
          */
-        /*$(document).mouseup(function (e){
-          if (!$(dropdown[i]).is(e.target) && $(dropdown[i]).has(e.target).length === 0) {
-            $(dropdown[i]).removeClass('active');
+        document.addEventListener('click', function (event) {
+          var isClickInside = dropdown.contains(event.target);
+
+          if (!isClickInside) {
+            dropdown.className = 'dropdown';
           }
-        });*/
+        });
       }
 
       dropdown.addEventListener('click', initClick, false);
