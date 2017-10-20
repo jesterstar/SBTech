@@ -3,11 +3,15 @@
  */
 
 export function initAccordion(el) {
-  let currElement = $(el);
-  let paneCollection, dataToggle;
 
-  const openLabel = 'Click to open';
-  const closeLabel = 'Click to close';
+  /**
+   * Define constants
+   */
+  const OPEN_LABEL_TEXT = 'Click to open';
+  const CLOSE_LABEL_TEXT = 'Click to close';
+
+  let currElement = document.querySelectorAll(el);
+  let paneCollection, dataToggle;
 
   if (!currElement) {
     return false;
@@ -17,7 +21,20 @@ export function initAccordion(el) {
      * Function to render all panes
      */
     function paneRender(container) {
-      paneCollection = $(container).find('.pane');
+      paneCollection = currElement[0].children;
+
+      for (let i=0; i < paneCollection.length; i++) {
+        dataToggle = paneCollection[i].dataset.toggle;
+
+        if (dataToggle == 'close') {
+          paneCollection[i].classList.add('closed');
+          paneCollection[i].children[0].innerHTML = OPEN_LABEL_TEXT;
+        } else if (dataToggle == 'open') {
+          paneCollection[i].classList.add('opened');
+          paneCollection[i].children[0].innerHTML = CLOSE_LABEL_TEXT;
+        }
+      }
+      /*paneCollection = $(container).find('.pane');
 
       for (let i=0; i < paneCollection.length; i++) {
         dataToggle = $(paneCollection[i]).data('toggle');
@@ -34,14 +51,14 @@ export function initAccordion(el) {
             .find('.panel .title')
             .text(closeLabel);
         }
-      }
+      }*/
     }
 
     /**
      * Toggle function
      */
     function clickTrigger(container) {
-      let panel = $(container).find('.pane > .panel');
+      /*let panel = $(container).find('.pane > .panel');
 
       $(panel).each((i) => {
         $(panel[i]).on('click', () => {
@@ -73,7 +90,7 @@ export function initAccordion(el) {
               .text(openLabel);
           }
         });
-      });
+      });*/
     }
 
     /**

@@ -24,7 +24,7 @@ gulp.task('sass', function(){
 
 gulp.task('css-libs', ['sass'], function(){
     return gulp.src('assets/css/main.css')
-        .pipe(concat('styles.min.css'))
+        .pipe(concat('main.min.css'))
         .pipe(cssnano())
         .pipe(gulp.dest('assets/css'));
 });
