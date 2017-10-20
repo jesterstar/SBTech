@@ -129,7 +129,7 @@ function initHeader() {
   /**
    * Init dropwodn module
    */
-  /*initDropdown('.dropdown');*/
+  (0, _dropdown.initDropdown)('.dropdown');
 }
 
 /***/ }),
@@ -148,7 +148,11 @@ exports.initDropdown = initDropdown;
  */
 
 function initDropdown(el) {
-  var currElement = $(el);
+
+  /**
+   * Define variables
+   */
+  var currElement = document.querySelectorAll(el);
 
   if (!currElement) {
     return false;
@@ -158,25 +162,32 @@ function initDropdown(el) {
      * Toggle function
      */
     var clickTrigger = function clickTrigger(container) {
-      var dropdown = $(container);
+      var dropdown = container[0];
 
-      $(dropdown).each(function (i) {
-        $(dropdown[i]).on('click', function (e) {
-          e.preventDefault();
+      function initClick(e) {
+        e.preventDefault();
 
-          if ($(dropdown[i]).hasClass('active')) {
+        /**
+         * Condition to remove/add active class
+         */
+        if (this.classList.value.match('active')) {
+          this.className = 'dropdown';
+          return;
+        }
+
+        this.classList.add('active');
+
+        /**
+         * Event when user click not on active element
+         */
+        /*$(document).mouseup(function (e){
+          if (!$(dropdown[i]).is(e.target) && $(dropdown[i]).has(e.target).length === 0) {
             $(dropdown[i]).removeClass('active');
-            return;
           }
-          $(dropdown[i]).addClass('active');
+        });*/
+      }
 
-          $(document).mouseup(function (e) {
-            if (!$(dropdown[i]).is(e.target) && $(dropdown[i]).has(e.target).length === 0) {
-              $(dropdown[i]).removeClass('active');
-            }
-          });
-        });
-      });
+      dropdown.addEventListener('click', initClick, false);
     };
 
     /**

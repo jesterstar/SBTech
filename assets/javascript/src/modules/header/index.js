@@ -5,5 +5,5 @@ export function initHeader() {
   /**
    * Init dropwodn module
    */
-  /*initDropdown('.dropdown');*/
+  initDropdown('.dropdown');
 }

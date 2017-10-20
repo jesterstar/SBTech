@@ -3,7 +3,11 @@
  */
 
 export function initDropdown(el) {
-  let currElement = $(el);
+
+  /**
+   * Define variables
+   */
+  let currElement = document.querySelectorAll(el);
 
   if (!currElement) {
     return false;
@@ -13,25 +17,32 @@ export function initDropdown(el) {
      * Toggle function
      */
     function clickTrigger(container) {
-      let dropdown = $(container);
+      let dropdown = container[0];
 
-      $(dropdown).each((i) => {
-        $(dropdown[i]).on('click', (e) => {
-          e.preventDefault();
+      function initClick(e) {
+        e.preventDefault();
 
-          if ($(dropdown[i]).hasClass('active')) {
+        /**
+         * Condition to remove/add active class
+         */
+        if (this.classList.value.match('active')) {
+          this.className = 'dropdown';
+          return;
+        }
+
+        this.classList.add('active');
+
+        /**
+         * Event when user click not on active element
+         */
+        /*$(document).mouseup(function (e){
+          if (!$(dropdown[i]).is(e.target) && $(dropdown[i]).has(e.target).length === 0) {
             $(dropdown[i]).removeClass('active');
-            return;
           }
-          $(dropdown[i]).addClass('active');
+        });*/
+      }
 
-          $(document).mouseup(function (e){
-            if (!$(dropdown[i]).is(e.target) && $(dropdown[i]).has(e.target).length === 0) {
-              $(dropdown[i]).removeClass('active');
-            }
-          });
-        });
-      });
+      dropdown.addEventListener('click', initClick, false);
     }
 
     /**
